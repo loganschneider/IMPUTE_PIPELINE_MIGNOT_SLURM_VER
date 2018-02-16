@@ -3,7 +3,7 @@ import subprocess
 import sys
 with open('chr_sizes.txt') as chr_in:
         for line in chr_in:
-                line_parse = line.strip().split('\t')
+                line_parse = line.strip().split(' ')
                 chr_ = re.sub('chr', '', line_parse[0])
                 size = line_parse[1]
                 if len(line_parse[1]) < 9:
