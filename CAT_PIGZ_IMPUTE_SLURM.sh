@@ -9,3 +9,4 @@ module load pigz/2.3.4
 mv CHR$SLURM_ARRAY_TASK_ID\_"$1".*_* impute_info/
 cat CHR$SLURM_ARRAY_TASK_ID\_"$1".* > CHR$SLURM_ARRAY_TASK_ID\_"$1".impute2
 pigz CHR$$SLURM_ARRAY_TASK_ID\_"$1".impute2
+sbatch --export=ALL
