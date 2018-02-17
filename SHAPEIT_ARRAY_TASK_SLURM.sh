@@ -5,12 +5,15 @@ command="./shapeit --input-bed "$1"_CHR\$SLURM_ARRAY_TASK_ID.bed "$1"_CHR\$SLURM
 -T 8"
 touch shapeit_array.sh
 chmod 755 shapeit_array.sh
-echo \#\!/bin/bash -l >shapeit_array.sh
-echo \#SBATCH --job-name=shapeit_array >>shapeit_array.sh
-echo \#SBATCH --mem-per-cpu=10000 >>shapeit_array.sh
-echo \#SBATCH --time=12:00:00 >>shapeit_array.sh
-echo \#SBATCH --array=1-22 >>shapeit_array.sh
-echo \#SBATCH --depend=afterok:"$2"_22:"$2"_22 >>shapeit_array.sh
-echo \#SBATCH --cpus-per-task=4 >>shapeit_array.sh
-echo \#SBATCH --account=mignot >>shapeit_array.sh
-echo $command >>shapeit_array.sh
+cat > shapeit_array.sh <<- EOF
+#!/bin/bash -l
+#SBATCH --job-name=shapeit_array
+#SBATCH --mem-per-cpu=10000
+#SBATCH --time=12:00:00
+#SBATCH --array=1-22
+#SBATCH --depend=afterok:"$2"_22:"$2"_22
+#SBATCH --cpus-per-task=4
+#SBATCH --account=mignot
+$command
+EOF
+sbatch --export=ALL shapeit_array.sh
