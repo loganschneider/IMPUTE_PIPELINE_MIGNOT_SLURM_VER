@@ -16,4 +16,4 @@ cat > shapeit_array.sh <<- EOF
 #SBATCH --account=mignot
 $command
 EOF
-sbatch --export=ALL shapeit_array.sh
+#sbatch --export=ALL shapeit_array.sh
