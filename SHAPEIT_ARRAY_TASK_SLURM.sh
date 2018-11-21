@@ -1,6 +1,6 @@
 #!/bin/bash
 command="./shapeit --input-bed "$1"_CHR\$SLURM_ARRAY_TASK_ID.bed "$1"_CHR\$SLURM_ARRAY_TASK_ID.bim "$1"_CHR\$SLURM_ARRAY_TASK_ID.fam \
--M /srv/gsfs0/projects/mignot/IMPUTE_REFERENCE_PHASE1/genetic_map_chr\$SLURM_ARRAY_TASK_ID\_combined_b37.txt \
+-M /srv/gsfs0/projects/mignot/IMPUTE_REFERENCE_PHASE3/genetic_map_chr\$SLURM_ARRAY_TASK_ID\_combined_b37.txt \
 -O "$1"_CHR\$SLURM_ARRAY_TASK_ID \
 -T 8"
 touch shapeit_array.sh
@@ -11,9 +11,9 @@ cat > shapeit_array.sh <<- EOF
 #SBATCH --mem-per-cpu=10000
 #SBATCH --time=12:00:00
 #SBATCH --array=1-22
-#SBATCH --depend=afterok:"$2"_22:"$2"_22
+#SBATCH --depend=afterok:"$2"_1:"$2"_22
 #SBATCH --cpus-per-task=4
 #SBATCH --account=mignot
 $command
 EOF
-sbatch --export=ALL shapeit_array.sh
+#sbatch --export=ALL shapeit_array.sh

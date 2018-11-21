@@ -12,4 +12,4 @@ cat > PLINK_SPLIT.sh <<- EOF
 module load plink/1.90
 $command
 EOF
-sbatch --export=ALL PLINK_SPLIT.sh
+#sbatch --export=ALL PLINK_SPLIT.sh
