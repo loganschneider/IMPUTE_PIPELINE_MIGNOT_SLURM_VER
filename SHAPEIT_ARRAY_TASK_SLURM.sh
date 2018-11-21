@@ -1,6 +1,6 @@
 #!/bin/bash
 command="./shapeit --input-bed "$1"_CHR\$SLURM_ARRAY_TASK_ID.bed "$1"_CHR\$SLURM_ARRAY_TASK_ID.bim "$1"_CHR\$SLURM_ARRAY_TASK_ID.fam \
--M /srv/gsfs0/projects/mignot/IMPUTE_REFERENCE_PHASE1/genetic_map_chr\$SLURM_ARRAY_TASK_ID\_combined_b37.txt \
+-M /srv/gsfs0/projects/mignot/IMPUTE_REFERENCE_PHASE3/genetic_map_chr\$SLURM_ARRAY_TASK_ID\_combined_b37.txt \
 -O "$1"_CHR\$SLURM_ARRAY_TASK_ID \
 -T 8"
 touch shapeit_array.sh
