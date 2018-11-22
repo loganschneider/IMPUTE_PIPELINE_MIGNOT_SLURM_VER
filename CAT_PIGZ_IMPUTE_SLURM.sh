@@ -1,5 +1,4 @@
 #!/bin/bash
-mkdir -p ~/impute_info
 touch CAT_IMPUTE.sh
 chmod 755 CAT_IMPUTE.sh
 cat > CAT_IMPUTE.sh <<- EOF
