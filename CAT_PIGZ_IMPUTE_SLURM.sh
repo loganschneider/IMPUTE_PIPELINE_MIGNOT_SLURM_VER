@@ -4,7 +4,7 @@ chmod 755 CAT_IMPUTE.sh
 cat > CAT_IMPUTE.sh <<- EOF
 #!/bin/bash -l
 #SBATCH --job-name=catimpute_files
-#SBATCH --mem-per-cpu=4000
+#SBATCH --mem-per-cpu=16000
 #SBATCH --array=1-22
 #SBATCH --account=mignot
 #SBATCH --time=12:00:00
