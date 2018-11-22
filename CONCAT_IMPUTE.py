@@ -101,3 +101,8 @@ class impute_clean(object):
 				parse_files = v.split('\n')
 				for filestring in parse_files:
 					self.write_out(outfile=outfile, filestring=filestring)
+if __name__ == '__main__':
+	impute_object = impute_clean(name='myimpute', file_prefix=file_prefix)
+	impute_object.get_attr()
+	#impute_object.parse_dir()
+	impute_object.concat_files()
