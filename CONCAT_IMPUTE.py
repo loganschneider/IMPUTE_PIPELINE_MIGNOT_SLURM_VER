@@ -12,7 +12,7 @@ import glob
 
 dttime=datetime.datetime.now().strftime ("%Y%m%d")
 parser = argparse.ArgumentParser(description='A class method to parse impute2 output and concat the imputed genotypes and concat the files')
-parser.add('-F', required=True, help='Suffix of the plink binaries used in the head command for impute2')
+parser.add_argument('-F', required=True, help='Suffix of the plink binaries used in the head command for impute2')
 
 ### parse the arguments
 args=parser.parse_args()
@@ -55,10 +55,10 @@ class impute_clean(object):
 			if file_ in filename:
 				assert file_ in filename
 				basename, ext = os.path.splitext(filename)
-				print(basename, ext)
+				#print(basename, ext)
 				if self.is_int(ext.replace('.','')):
 					make_key = 'impute'
-					print 'yeay'
+					#print 'yeay'
 				else:
 					make_key = '_'.join(ext.split('_')[1:])
 				if make_key in imp_accfiles:
@@ -76,8 +76,8 @@ class impute_clean(object):
 				line_n =0
 				for line in infile:
 					line_n += 1
-					if line_n == 100000:
-						line_buf += 100000
+					if line_n == 10000:
+						line_buf += 10000
 						line_n =0
 						print('PROCESSED {} LINES '.format(line_buf))
 					outfile.write(line)
@@ -101,8 +101,13 @@ class impute_clean(object):
 				parse_files = v.split('\n')
 				for filestring in parse_files:
 					self.write_out(outfile=outfile, filestring=filestring)
+
+
+
+
 if __name__ == '__main__':
 	impute_object = impute_clean(name='myimpute', file_prefix=file_prefix)
 	impute_object.get_attr()
 	#impute_object.parse_dir()
 	impute_object.concat_files()
+#file_='CHR6_Plates_77_to_109_PMRA_shapeit'#124
