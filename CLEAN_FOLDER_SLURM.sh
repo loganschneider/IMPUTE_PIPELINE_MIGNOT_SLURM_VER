@@ -11,9 +11,10 @@ cat > CLEAN_FOLDER.sh <<- EOF
 #SBATCH --mem-per-cpu=8000
 #SBATCH --time=05:00:00
 #SBATCH --account=mignot
-$command1
-$command2
-$command3
-$command4
+#SBATCH --ntasks=4
+$command\$SLURM_TASK_ID
+#$command2
+#$command3
+#$command4
 EOF
 #sbatch --export=ALL CLEAN_FOLDER.sh
