@@ -16,4 +16,4 @@ $command2
 $command3
 $command4
 EOF
-#sbatch --export=ALL CLEAN_FOLDER.sh
+sbatch --export=ALL CLEAN_FOLDER.sh
