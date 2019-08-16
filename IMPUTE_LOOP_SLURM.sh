@@ -18,6 +18,12 @@ cat > tmpchr"$1".$i.sh <<- EOF
 #SBATCH --account=mignot
 $command
 EOF
+pending=$(squeue -t pd -u $USER -h | wc -l)
 sbatch --export=ALL tmpchr"$1".$i.sh
+while [[ ${pending} -gt 250 ]]
+do
+sleep 60
+pending=$(squeue -t pd -u $USER -h | wc -l)
+done
 rm tmpchr"$1".$i.sh
 done
