@@ -6,7 +6,7 @@
 for i in `seq 0 $2` 
 do
 interval=`echo $i'e6 '$(($i +1))'e6'`
-command=`echo ./impute2 -known_haps_g "$3"_CHR"$1".haps -h /srv/gsfs0/projects/mignot/IMPUTE_REFERENCE_PHASE3/1000GP_Phase3_chr"$1".hap.gz -l /srv/gsfs0/projects/mignot/IMPUTE_REFERENCE_PHASE3/1000GP_Phase3_chr"$1".legend.gz -m /srv/gsfs0/projects/mignot/IMPUTE_REFERENCE_PHASE3/genetic_map_chr"$1"_combined_b37.txt -int "$interval" -buffer 500 -Ne 20000 -o CHR"$1"_"$3"."$i"`
+command=`echo ./impute2 -known_haps_g "$3"_CHR"$1".haps -h /labs/mignot/IMPUTE_REFERENCE_PHASE3/1000GP_Phase3_chr"$1".hap.gz -l /labs/mignot/IMPUTE_REFERENCE_PHASE3/1000GP_Phase3_chr"$1".legend.gz -m /labs/mignot/IMPUTE_REFERENCE_PHASE3/genetic_map_chr"$1"_combined_b37.txt -int "$interval" -buffer 500 -Ne 20000 -o CHR"$1"_"$3"."$i"`
 touch tmpchr"$1".$i.sh
 chmod 755 tmpchr"$1".$i.sh
 cat > tmpchr"$1".$i.sh <<- EOF
@@ -20,7 +20,7 @@ $command
 EOF
 pending=$(squeue -t pd -u $USER -h | wc -l)
 sbatch --export=ALL tmpchr"$1".$i.sh
-while [[ ${pending} -gt 250 ]]
+while [[ ${pending} -gt 100 ]]
 do
 sleep 60
 pending=$(squeue -t pd -u $USER -h | wc -l)
