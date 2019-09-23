@@ -8,9 +8,9 @@ echo "##########################################################################
 
 echo "`date` STARTING IMPUTATION "
 echo " `date` CHECKING IF PLINK FILES SPLIT BY CHR EXIST in CURRENT DIR  "
-if [[ -f $PWD/${w}_CHR2.bed ]];then
+if [[ -f $PWD/${1}_CHR2.bed ]];then
    echo " `date` PLINK FILES HAVE ALREADY BEEN SPLIT >>>> PROCEEDING TO SHAPEIT TASK"
-   if  [[ -f $PWD/${w}_CHR2.haps ]];then
+   if  [[ -f $PWD/${1}_CHR2.haps ]];then
       ./SHAPEIT_ARRAY_TASK_SLURM.sh $1 $job0
       JOBID1=$(sbatch --export=ALL shapeit_array.sh)
       if ! echo ${JOBID1} | grep -q "[1-9][0-9]*$"; then 
