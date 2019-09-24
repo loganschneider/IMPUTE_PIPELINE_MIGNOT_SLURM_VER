@@ -7,7 +7,7 @@ echo "#                                           ambati@stanford.edu           
 echo "################################################################################################################"
 
 echo "`date` STARTING IMPUTATION "
-echo " `date` CHECKING IF PLINK FILES SPLIT BY CHR EXIST in CURRENT DIR  "
+echo " `date` CHECKING IF PLINK FILES SPLIT BY CHR EXIST in CURRENT DIR"
 if [[ -f $PWD/$1_CHR2.bed ]];then
    echo " `date` PLINK FILES HAVE ALREADY BEEN SPLIT >>>> PROCEEDING TO SHAPEIT TASK"
    if  [[ -f $PWD/$1_CHR2.haps ]];then
