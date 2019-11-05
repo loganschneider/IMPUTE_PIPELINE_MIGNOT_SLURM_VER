@@ -26,7 +26,6 @@ cat > shapeit_array.sh <<- EOF
 #SBATCH --depend=afterok:"$2"
 #SBATCH --cpus-per-task=4
 #SBATCH --account=mignot
-#sbatch --export=ALL shapeit_array.sh
 $command
 EOF
 fi
