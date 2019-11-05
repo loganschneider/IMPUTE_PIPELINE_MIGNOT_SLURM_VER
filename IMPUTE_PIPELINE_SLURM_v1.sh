@@ -15,7 +15,7 @@ if [[ -f $PWD/$1_CHR2.bed ]];then
         python IMPUTE_HEADCOMMAND_SLURM.py $1 
    else
         echo "`date` PLINK FILES HAVE ALREADY BEEN SPLIT BUT NOT PHASED >>>> PROCEEDING TO PHASING"
-        ./SHAPEIT_ARRAY_TASK_SLURM.sh $1 $job0
+        ./SHAPEIT_ARRAY_TASK_SLURM.sh $1
         JOBID1=$(sbatch --export=ALL shapeit_array.sh)
         if ! echo ${JOBID1} | grep -q "[1-9][0-9]*$"; then
             echo "`date` Job(s) submission failed."
